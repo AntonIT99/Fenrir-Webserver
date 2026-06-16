@@ -29,7 +29,7 @@ public record SkadiProperties(
             ? List.of("de", "en", "fr")
             : List.copyOf(defaultLanguages);
         connectTimeoutMs = connectTimeoutMs > 0 ? connectTimeoutMs : 1200;
-        requestTimeoutMs = requestTimeoutMs > 0 ? requestTimeoutMs : 30000;
+        requestTimeoutMs = requestTimeoutMs > 0 ? requestTimeoutMs : 300000;
         healthTimeoutMs = healthTimeoutMs > 0 ? healthTimeoutMs : 1200;
     }
 
