@@ -34,8 +34,11 @@ public class SecurityConfig
                     "/minecraft/",
                     "/minecraft/index.html",
                     "/minecraft/**",
+                    "/skadi",
+                    "/skadi/",
                     "/api/site/info",
-                    "/api/minecraft/status"
+                    "/api/minecraft/status",
+                    "/api/skadi/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )

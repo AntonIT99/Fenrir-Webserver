@@ -2,3 +2,24 @@ minecraft:
   host: 192.168.178.30
   port: 25565
   timeout-ms: 1500
+
+skadi:
+  rag-service:
+    workers:
+      - name: "primary-4080"
+        base-url: "http://192.168.178.30:8000"
+        priority: 1
+      - name: "fallback-5070"
+        base-url: "http://192.168.178.23:8000"
+        priority: 2
+    default-model: "qwen3:14b"
+    default-repositories:
+      - "default"
+      - "sensitive"
+    default-languages:
+      - "de"
+      - "en"
+      - "fr"
+    connect-timeout-ms: 1200
+    request-timeout-ms: 30000
+    health-timeout-ms: 1200

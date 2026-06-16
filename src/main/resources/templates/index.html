@@ -31,7 +31,7 @@
         .container {
             position: relative;
             z-index: 1;
-            width: min(980px, calc(100% - 32px));
+            width: min(1100px, calc(100% - 32px));
             margin-top: 64px;
         }
 
@@ -81,6 +81,18 @@
             fill: currentColor;
         }
 
+        .icon.skadi-icon {
+            color: #9bd5bd;
+        }
+
+        .icon.skadi-icon svg {
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.8;
+        }
+
         .card h2 {
             margin: 0;
             font-size: 1.15rem;
@@ -126,6 +138,18 @@
         <a class="card" href="/games">
             <div class="icon">🎮</div>
             <h2>Spiele</h2>
+        </a>
+
+        <a class="card" href="/skadi">
+            <div class="icon skadi-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img">
+                    <path d="M5 6.5A3.5 3.5 0 0 1 8.5 3h7A3.5 3.5 0 0 1 19 6.5v5A3.5 3.5 0 0 1 15.5 15H12l-4.25 4v-4.1A3.5 3.5 0 0 1 5 11.5v-5Z"/>
+                    <path d="M9 8h4"/>
+                    <path d="M9 11h2.5"/>
+                    <path d="M17 17.25 18 15l1 2.25 2.25 1L19 19.25l-1 2.25-1-2.25-2.25-1L17 17.25Z"/>
+                </svg>
+            </div>
+            <h2>Skadi</h2>
         </a>
 
         <a class="card" href="https://github.com/AntonIT99" target="_blank" rel="noopener noreferrer">

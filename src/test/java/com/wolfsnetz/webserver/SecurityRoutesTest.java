@@ -21,7 +21,13 @@ import org.springframework.test.web.servlet.MockMvc;
     "app.bootstrap-admin.password=admin123",
     "minecraft.host=127.0.0.1",
     "minecraft.port=1",
-    "minecraft.timeout-ms=25"
+    "minecraft.timeout-ms=25",
+    "skadi.rag-service.workers[0].name=test-primary",
+    "skadi.rag-service.workers[0].base-url=http://127.0.0.1:1",
+    "skadi.rag-service.workers[0].priority=1",
+    "skadi.rag-service.connect-timeout-ms=25",
+    "skadi.rag-service.request-timeout-ms=25",
+    "skadi.rag-service.health-timeout-ms=25"
 })
 @AutoConfigureMockMvc
 class SecurityRoutesTest
@@ -58,6 +64,12 @@ class SecurityRoutesTest
             .andExpect(status().isOk());
 
         mvc.perform(get("/api/minecraft/status"))
+            .andExpect(status().isOk());
+
+        mvc.perform(get("/skadi"))
+            .andExpect(status().isOk());
+
+        mvc.perform(get("/api/skadi/status"))
             .andExpect(status().isOk());
     }
 

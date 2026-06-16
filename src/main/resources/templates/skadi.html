@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>Skadi</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            color-scheme: dark;
+            --bg: #080b0d;
+            --panel: rgba(13, 18, 22, 0.88);
+            --panel-strong: rgba(17, 24, 29, 0.96);
+            --line: rgba(222, 234, 228, 0.14);
+            --text: #eef5f1;
+            --muted: #a8b7b0;
+            --assistant: rgba(33, 48, 49, 0.9);
+            --user: rgba(54, 91, 80, 0.94);
+            --accent: #9bd5bd;
+            --accent-strong: #d8b46a;
+            --danger: #f1a7a1;
+            --danger-bg: rgba(92, 26, 28, 0.56);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                linear-gradient(180deg, rgba(8, 11, 13, 0.58), rgba(8, 11, 13, 0.94)),
+                url('/images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text);
+        }
+
+        .shell {
+            min-height: 100vh;
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            gap: 18px;
+            width: min(1120px, 100%);
+            margin: 0 auto;
+            padding: 22px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand h1 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .brand p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: min(360px, 100%);
+            justify-content: flex-end;
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-align: right;
+            flex-wrap: wrap;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-strong);
+            box-shadow: 0 0 16px rgba(216, 180, 106, 0.5);
+            flex: 0 0 auto;
+        }
+
+        .status.online .status-dot {
+            background: var(--accent);
+            box-shadow: 0 0 16px rgba(155, 213, 189, 0.55);
+        }
+
+        .status.offline .status-dot {
+            background: var(--danger);
+            box-shadow: 0 0 16px rgba(241, 167, 161, 0.5);
+        }
+
+        .status-main {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .status-detail {
+            width: 100%;
+            font-size: 0.82rem;
+        }
+
+        .chat {
+            min-height: 0;
+            height: calc(100vh - 142px);
+            min-height: 540px;
+            display: grid;
+            grid-template-rows: minmax(0, 1fr) auto;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--panel);
+            box-shadow: 0 24px 90px rgba(0, 0, 0, 0.34);
+            backdrop-filter: blur(12px);
+        }
+
+        .messages {
+            min-height: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 24px;
+            scroll-behavior: smooth;
+        }
+
+        .empty-state {
+            margin: auto;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .message-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .message-row.user {
+            justify-content: flex-end;
+        }
+
+        .message-row.assistant {
+            justify-content: flex-start;
+        }
+
+        .bubble {
+            max-width: min(760px, 84%);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 14px 16px;
+            background: var(--assistant);
+            color: var(--text);
+        }
+
+        .message-row.user .bubble {
+            background: var(--user);
+            border-color: rgba(210, 238, 228, 0.2);
+        }
+
+        .message-body {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            line-height: 1.55;
+            font-size: 0.98rem;
+        }
+
+        .sources {
+            margin-top: 12px;
+            border-top: 1px solid var(--line);
+            padding-top: 10px;
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .sources summary {
+            cursor: pointer;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .source-item {
+            padding: 8px 0;
+        }
+
+        .source-meta {
+            color: var(--text);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .source-text {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            line-height: 1.45;
+        }
+
+        .loading .message-body {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.35;
+                transform: scale(0.82);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .error {
+            display: none;
+            margin: 0 18px 14px;
+            padding: 11px 12px;
+            border: 1px solid rgba(241, 167, 161, 0.4);
+            border-radius: 8px;
+            color: #ffe4e1;
+            background: var(--danger-bg);
+            font-size: 0.92rem;
+        }
+
+        .error.visible {
+            display: block;
+        }
+
+        .composer-wrap {
+            background: var(--panel-strong);
+            border-top: 1px solid var(--line);
+            padding: 16px 18px 18px;
+        }
+
+        .composer {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: end;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 52px;
+            max-height: 170px;
+            resize: none;
+            border: 1px solid rgba(222, 234, 228, 0.2);
+            border-radius: 8px;
+            padding: 14px 15px;
+            background: rgba(3, 6, 7, 0.55);
+            color: var(--text);
+            font: inherit;
+            line-height: 1.45;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: rgba(155, 213, 189, 0.72);
+            box-shadow: 0 0 0 3px rgba(155, 213, 189, 0.14);
+        }
+
+        textarea::placeholder {
+            color: #7d8c86;
+        }
+
+        button {
+            min-width: 96px;
+            height: 52px;
+            border: 1px solid rgba(232, 241, 237, 0.22);
+            border-radius: 8px;
+            padding: 0 18px;
+            background: #d8b46a;
+            color: #14100a;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.16s ease, transform 0.16s ease, opacity 0.16s ease;
+        }
+
+        button:hover:not(:disabled) {
+            background: #e5c987;
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            cursor: wait;
+            opacity: 0.55;
+        }
+
+        @media (max-width: 720px) {
+            .shell {
+                padding: 16px;
+                gap: 14px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .status {
+                justify-content: flex-start;
+                text-align: left;
+                min-width: 0;
+            }
+
+            .chat {
+                height: calc(100vh - 172px);
+                min-height: 460px;
+            }
+
+            .messages {
+                padding: 16px;
+            }
+
+            .bubble {
+                max-width: 92%;
+            }
+
+            .composer {
+                grid-template-columns: 1fr;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="shell">
+    <header class="topbar">
+        <div class="brand">
+            <h1>Skadi</h1>
+            <p>Multilingual AI Research Assistant</p>
+        </div>
+
+        <div id="serviceStatus" class="status" aria-live="polite">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="statusText" class="status-main">Checking AI service...</span>
+            <span id="statusDetail" class="status-detail">Active worker: none | Fallback available: no</span>
+        </div>
+    </header>
+
+    <section class="chat" aria-label="Skadi chat">
+        <div id="messages" class="messages" aria-live="polite">
+            <div id="emptyState" class="empty-state">Skadi is ready.</div>
+        </div>
+
+        <div class="composer-wrap">
+            <div id="errorBox" class="error" role="alert"></div>
+            <form id="chatForm" class="composer">
+                <textarea id="questionInput" name="question" rows="1" placeholder="Ask Skadi..." autocomplete="off"></textarea>
+                <button id="sendButton" type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<script>
+    const messages = document.getElementById('messages');
+    const emptyState = document.getElementById('emptyState');
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('questionInput');
+    const sendButton = document.getElementById('sendButton');
+    const errorBox = document.getElementById('errorBox');
+    const serviceStatus = document.getElementById('serviceStatus');
+    const statusText = document.getElementById('statusText');
+    const statusDetail = document.getElementById('statusDetail');
+    const csrfToken = document.querySelector('meta[name="_csrf"]')?.content;
+    const csrfHeader = document.querySelector('meta[name="_csrf_header"]')?.content;
+    const unavailableMessage = 'The AI service is currently unavailable. Please try again later.';
+    let busy = false;
+
+    function setBusy(value) {
+        busy = value;
+        sendButton.disabled = value;
+        input.disabled = value;
+    }
+
+    function hideError() {
+        errorBox.classList.remove('visible');
+        errorBox.textContent = '';
+    }
+
+    function showError(message) {
+        errorBox.textContent = message;
+        errorBox.classList.add('visible');
+    }
+
+    function scrollToBottom() {
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    function removeEmptyState() {
+        if (emptyState) {
+            emptyState.remove();
+        }
+    }
+
+    function appendMessage(role, text, sources) {
+        removeEmptyState();
+
+        const row = document.createElement('div');
+        row.className = `message-row ${role}`;
+
+        const bubble = document.createElement('article');
+        bubble.className = 'bubble';
+
+        const body = document.createElement('div');
+        body.className = 'message-body';
+        body.textContent = text || '';
+        bubble.appendChild(body);
+
+        if (Array.isArray(sources) && sources.length > 0) {
+            bubble.appendChild(renderSources(sources));
+        }
+
+        row.appendChild(bubble);
+        messages.appendChild(row);
+        scrollToBottom();
+        return row;
+    }
+
+    function appendLoading() {
+        removeEmptyState();
+
+        const row = document.createElement('div');
+        row.className = 'message-row assistant loading';
+
+        const bubble = document.createElement('article');
+        bubble.className = 'bubble';
+
+        const body = document.createElement('div');
+        body.className = 'message-body';
+        body.appendChild(document.createTextNode('Thinking'));
+
+        const pulse = document.createElement('span');
+        pulse.className = 'pulse';
+        pulse.setAttribute('aria-hidden', 'true');
+        body.appendChild(pulse);
+
+        bubble.appendChild(body);
+        row.appendChild(bubble);
+        messages.appendChild(row);
+        scrollToBottom();
+        return row;
+    }
+
+    function renderSources(sources) {
+        const details = document.createElement('details');
+        details.className = 'sources';
+
+        const summary = document.createElement('summary');
+        summary.textContent = 'Sources';
+        details.appendChild(summary);
+
+        sources.forEach((source, index) => {
+            const item = document.createElement('div');
+            item.className = 'source-item';
+
+            const meta = document.createElement('div');
+            meta.className = 'source-meta';
+            meta.textContent = sourceLabel(source, index);
+            item.appendChild(meta);
+
+            if (source.text) {
+                const excerpt = document.createElement('div');
+                excerpt.className = 'source-text';
+                excerpt.textContent = source.text;
+                item.appendChild(excerpt);
+            }
+
+            details.appendChild(item);
+        });
+
+        return details;
+    }
+
+    function sourceLabel(source, index) {
+        const parts = [`[${index + 1}] ${source.book || 'source'}`];
+        if (source.page !== null && source.page !== undefined) {
+            parts.push(`page ${source.page}`);
+        }
+        if (source.score !== null && source.score !== undefined) {
+            const score = Number(source.score);
+            parts.push(`score ${Number.isFinite(score) ? score.toFixed(2) : source.score}`);
+        }
+        return parts.join(', ');
+    }
+
+    function resizeInput() {
+        input.style.height = 'auto';
+        input.style.height = `${input.scrollHeight}px`;
+    }
+
+    async function refreshStatus() {
+        try {
+            const response = await fetch('/api/skadi/status', {
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Status request failed: ${response.status}`);
+            }
+
+            renderStatus(await response.json());
+        }
+        catch (error) {
+            renderStatus({ online: false, activeWorkerName: null, fallbackAvailable: false });
+        }
+    }
+
+    function renderStatus(status) {
+        serviceStatus.classList.toggle('online', Boolean(status.online));
+        serviceStatus.classList.toggle('offline', !status.online);
+        statusText.textContent = status.online ? 'AI service online' : 'AI service unavailable';
+        statusDetail.textContent = `Active worker: ${status.activeWorkerName || 'none'} | Fallback available: ${status.fallbackAvailable ? 'yes' : 'no'}`;
+    }
+
+    function updateActiveWorker(workerName) {
+        if (!workerName) {
+            return;
+        }
+
+        serviceStatus.classList.add('online');
+        serviceStatus.classList.remove('offline');
+        statusText.textContent = 'AI service online';
+
+        const fallbackText = statusDetail.textContent.includes('Fallback available: yes')
+            ? 'yes'
+            : 'no';
+        statusDetail.textContent = `Active worker: ${workerName} | Fallback available: ${fallbackText}`;
+    }
+
+    input.addEventListener('input', resizeInput);
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            form.requestSubmit();
+        }
+    });
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const question = input.value.trim();
+        if (!question || busy) {
+            return;
+        }
+
+        hideError();
+        appendMessage('user', question, []);
+        input.value = '';
+        resizeInput();
+        setBusy(true);
+
+        const loading = appendLoading();
+
+        try {
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+
+            if (csrfHeader && csrfToken) {
+                headers[csrfHeader] = csrfToken;
+            }
+
+            const response = await fetch('/api/skadi/chat', {
+                method: 'POST',
+                headers,
+                body: JSON.stringify({ question })
+            });
+
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(data.message || unavailableMessage);
+            }
+
+            loading.remove();
+            appendMessage('assistant', data.answer || '', data.sources || []);
+            updateActiveWorker(data.workerName);
+        }
+        catch (error) {
+            loading.remove();
+            showError(unavailableMessage);
+            await refreshStatus();
+        }
+        finally {
+            setBusy(false);
+            input.focus();
+        }
+    });
+
+    resizeInput();
+    refreshStatus();
+</script>
+</body>
+</html>
