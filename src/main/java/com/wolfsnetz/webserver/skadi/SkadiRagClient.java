@@ -67,7 +67,9 @@ public class SkadiRagClient
                 );
 
                 if (response.statusCode() < 200 || response.statusCode() >= 300) {
-                    throw new IOException("HTTP " + response.statusCode() + " from " + worker.name());
+                    throw new IOException(
+                        "HTTP " + response.statusCode() + " from " + worker.name() + ": " + response.body()
+                    );
                 }
 
                 SkadiChatResponse chatResponse = parseChatResponse(response.body(), worker.name());
