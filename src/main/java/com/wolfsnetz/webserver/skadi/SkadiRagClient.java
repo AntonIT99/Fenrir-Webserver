@@ -55,6 +55,7 @@ public class SkadiRagClient
         for (SkadiProperties.Worker worker : properties.orderedWorkers()) {
             try {
                 HttpRequest request = HttpRequest.newBuilder(endpoint(worker, "/chat"))
+                    .version(HttpClient.Version.HTTP_1_1)
                     .timeout(properties.requestTimeout())
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
@@ -119,6 +120,7 @@ public class SkadiRagClient
     {
         try {
             HttpRequest request = HttpRequest.newBuilder(endpoint(worker, "/health"))
+                .version(HttpClient.Version.HTTP_1_1)
                 .timeout(properties.healthTimeout())
                 .header("Accept", "application/json")
                 .GET()
