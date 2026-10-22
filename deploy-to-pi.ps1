@@ -151,6 +151,7 @@ After=network.target
 [Service]
 WorkingDirectory=$RemoteDirectory
 EnvironmentFile=$RemoteEnvPath
+EnvironmentFile=-$RemoteDirectory/mod-catalogue.env
 ExecStart=/usr/bin/java -jar $TargetPath --spring.profiles.active=prod
 Restart=always
 RestartSec=5

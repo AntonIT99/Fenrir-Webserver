@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import java.util.Properties;
 
 @Configuration
 public class SqliteDataSourceConfig
@@ -23,6 +24,10 @@ public class SqliteDataSourceConfig
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(url);
+        Properties connectionProperties = new Properties();
+        connectionProperties.setProperty("foreign_keys", "true");
+        connectionProperties.setProperty("busy_timeout", "5000");
+        dataSource.setConnectionProperties(connectionProperties);
         return dataSource;
     }
 

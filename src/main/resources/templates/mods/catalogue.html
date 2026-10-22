@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{mods/fragments :: head('Minecraft Mods')}"></head>
+<body>
+<header th:replace="~{mods/fragments :: header}"></header>
+<main class="shell">
+    <div class="breadcrumbs"><a href="/games/minecraft">Minecraft</a><span>/</span><span th:text="${admin ? 'Manage mods' : 'Minecraft Mods'}"></span></div>
+    <section class="hero">
+        <div><p class="eyebrow">YOUR NEXT MODPACK STARTS HERE</p><h1 th:text="${admin ? 'Manage your catalogue.' : 'Find your next building block.'}"></h1>
+            <p class="lede" th:text="${admin ? 'Research, edit, and review every family — including drafts and archived entries.' : 'Explore mods, follow their successors, and compare support across Minecraft versions.'}"></p></div>
+        <div class="hero-stat"><strong th:text="${page.total()}">0</strong><span th:text="${admin ? 'families in this view' : 'published families found'}"></span></div>
+    </section>
+    <div class="toolbar" th:if="${admin}"><a class="button primary" href="/admin/mods/new">+ New family</a><a class="button" href="/admin/mods/import">Import / export</a><a href="/games/minecraft/mods">View public catalogue ↗</a></div>
+    <form class="filters panel" method="get" th:action="${admin ? '/admin/mods' : '/games/minecraft/mods'}">
+        <label class="search-field">Search mods<input type="search" name="q" placeholder="Name, alias, project, or description…" maxlength="200" th:value="${q}"></label>
+        <div class="filter-grid">
+            <label>Theme<select name="tag"><option value="">All themes</option><option th:each="tag : ${tags}" th:value="${tag}" th:text="${@modView.label(tag)}" th:selected="${tag == selectedTag}"></option></select></label>
+            <label>Minecraft version<select name="minecraftVersion"><option value="">All versions</option><option th:each="version : ${versions}" th:value="${version}" th:text="${version}" th:selected="${version == selectedVersion}"></option></select></label>
+            <label>Loader<select name="loader"><option value="">All loaders</option><option th:each="loader : ${loaders}" th:value="${loader}" th:text="${@modView.label(loader)}" th:selected="${loader == selectedLoader}"></option></select></label>
+            <label>Availability<select name="availability"><option value="">Any availability</option><option th:each="value : ${availabilityOptions}" th:value="${value}" th:text="${@modView.label(value)}" th:selected="${value == selectedAvailability}"></option></select></label>
+            <label>Maintenance<select name="maintenance"><option value="">Any maintenance</option><option th:each="value : ${maintenanceOptions}" th:value="${value}" th:text="${@modView.label(value)}" th:selected="${value == selectedMaintenance}"></option></select></label>
+        </div>
+        <div class="filter-bottom"><label class="check"><input type="checkbox" name="bothPrimary" value="true" th:checked="${bothPrimary}"> Released for both Forge 1.20.1 and NeoForge 1.21.1</label><div class="actions"><a th:href="${admin ? '/admin/mods' : '/games/minecraft/mods'}">Reset</a><button class="primary" type="submit">Search catalogue</button></div></div>
+    </form>
+    <div class="section-heading"><h2 th:text="${admin ? 'Mod families' : 'Explore the catalogue'}"></h2><span class="muted">Availability and feature parity are assessed separately.</span></div>
+    <section th:if="${page.entries().isEmpty()}" class="empty-state panel"><span class="empty-icon">◇</span><h2>No mods in this view yet.</h2><p th:text="${admin ? 'Add your first family, import researched records, or try a broader search.' : 'Try fewer filters, or check back as more research is published.'}"></p></section>
+    <article class="family-card panel" th:each="entry : ${page.entries()}" th:with="family=${entry.family()}">
+        <div class="card-heading"><div><div class="tags"><span class="tag" th:each="tag : ${family.tags()}" th:text="${@modView.label(tag)}"></span><span th:if="${admin and !family.published()}" class="tag draft">Draft</span><span th:if="${admin and family.archived()}" class="tag archived">Archived</span></div>
+            <h2><a th:href="${(admin ? '/admin/mods/' + family.id() + '/preview' : '/games/minecraft/mods/' + family.id())}" th:text="${family.name()}"></a></h2></div>
+            <a class="text-link" th:href="${admin ? '/admin/mods/' + family.id() + '/edit' : '/games/minecraft/mods/' + family.id()}" th:text="${admin ? 'Edit family ↗' : 'Explore family ↗'}"></a></div>
+        <p class="description" th:text="${family.description()}"></p>
+        <p class="aliases muted" th:if="${!family.aliases().isEmpty()}">Also known as <span th:text="${#strings.listJoin(family.aliases(), ', ')}"></span></p>
+        <div th:replace="~{mods/fragments :: matrix(${family})}"></div>
+        <div class="card-footer"><span th:text="${family.projects().size() + ' projects · ' + family.evidence().size() + ' research sources'}"></span><a th:if="${admin}" th:href="@{/admin/mods/{id}/history(id=${family.id()})}" th:text="${'Revision ' + entry.revision() + ' · View history'}"></a></div>
+    </article>
+    <nav class="pagination" aria-label="Catalogue pages" th:if="${page.total() > page.limit()}">
+        <a class="button" th:if="${page.offset() > 0}" th:href="@{${admin ? '/admin/mods' : '/games/minecraft/mods'}(q=${q},tag=${selectedTag},minecraftVersion=${selectedVersion},loader=${selectedLoader},availability=${selectedAvailability},maintenance=${selectedMaintenance},bothPrimary=${bothPrimary},offset=${page.previousOffset()})}">← Previous</a>
+        <span th:text="${'Showing ' + (page.offset()+1) + '–' + page.endOffset() + ' of ' + page.total()}"></span>
+        <a class="button" th:if="${page.offset() + page.limit() < page.total()}" th:href="@{${admin ? '/admin/mods' : '/games/minecraft/mods'}(q=${q},tag=${selectedTag},minecraftVersion=${selectedVersion},loader=${selectedLoader},availability=${selectedAvailability},maintenance=${selectedMaintenance},bothPrimary=${bothPrimary},offset=${page.offset()+page.limit()})}">Next →</a>
+    </nav>
+</main></body></html>

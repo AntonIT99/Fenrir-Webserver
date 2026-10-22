@@ -1,0 +1,1232 @@
+{
+  "entries": [
+    {
+      "revision": 0,
+      "family": {
+        "id": "more-culling",
+        "name": "More Culling",
+        "description": "Changes block, item-frame, leaf, and other culling paths; the unofficial Forge port is separate from upstream.",
+        "aliases": [
+          "More Culling Reforged"
+        ],
+        "tags": [
+          "performance",
+          "rendering"
+        ],
+        "published": true,
+        "archived": false,
+        "projects": [
+          {
+            "id": "more-culling-reforged",
+            "name": "More Culling Reforged",
+            "description": "Unofficial Forge port of More Culling with Embeddium integration.",
+            "listings": [
+              {
+                "platform": "CURSEFORGE",
+                "platformId": "1660981",
+                "url": "https://www.curseforge.com/minecraft/mc-mods/more-culling-reforged"
+              }
+            ],
+            "support": [
+              {
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "A downloadable build is listed for this Minecraft version/loader. Exact mod-release version not stored; feature parity and branch maintenance unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "more-culling-reforged-official"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.7.10",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.12.2",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              }
+            ],
+            "relationships": [
+              {
+                "relatedProjectId": "moreculling",
+                "type": "FORK",
+                "target": null,
+                "notes": "The project explicitly identifies itself as an unofficial Forge port of More Culling.",
+                "evidenceIds": [
+                  "more-culling-reforged-fork-moreculling"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "moreculling",
+            "name": "More Culling",
+            "description": "A mod that changes how multiple types of culling are handled in order to improve performance",
+            "listings": [
+              {
+                "platform": "MODRINTH",
+                "platformId": "51shyZVL",
+                "url": "https://modrinth.com/mod/moreculling"
+              }
+            ],
+            "support": [
+              {
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "moreculling-1-21-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.7.10",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.12.2",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "moreculling-26-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "moreculling-26-1-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1.2",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "moreculling-26-1-2-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.2",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "moreculling-26-2-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.3",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "moreculling-26-3-neoforge"
+                ],
+                "releases": []
+              }
+            ],
+            "relationships": [
+              {
+                "relatedProjectId": "cloth-config",
+                "type": "REQUIRED_DEPENDENCY",
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "notes": "The checked downloadable build explicitly declares this required dependency/integration for this target.",
+                "evidenceIds": [
+                  "moreculling-required_dependency-cloth-config-1-21-1"
+                ]
+              }
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "more-culling-reforged-official",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/more-culling-reforged",
+            "claim": "Project purpose and published support",
+            "summary": "Unofficial Forge port of More Culling with Embeddium integration. Official listing checked for explicit Minecraft version and loader labels.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "moreculling-description",
+            "url": "https://modrinth.com/mod/moreculling",
+            "claim": "Project identity and purpose",
+            "summary": "A mod that changes how multiple types of culling are handled in order to improve performance",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "moreculling-1-21-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/51shyZVL/version?game_versions=%5B%221.21.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 1.21.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "moreculling-26-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/51shyZVL/version?game_versions=%5B%2226.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "moreculling-26-1-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/51shyZVL/version?game_versions=%5B%2226.1.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "moreculling-26-1-2-neoforge",
+            "url": "https://api.modrinth.com/v2/project/51shyZVL/version?game_versions=%5B%2226.1.2%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1.2 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "moreculling-26-2-neoforge",
+            "url": "https://api.modrinth.com/v2/project/51shyZVL/version?game_versions=%5B%2226.2%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.2 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "moreculling-26-3-neoforge",
+            "url": "https://api.modrinth.com/v2/project/51shyZVL/version?game_versions=%5B%2226.3%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.3 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "more-culling-reforged-fork-moreculling",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/more-culling-reforged",
+            "claim": "more-culling-reforged fork moreculling",
+            "summary": "The project explicitly identifies itself as an unofficial Forge port of More Culling.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "moreculling-required_dependency-cloth-config-1-21-1",
+            "url": "https://api.modrinth.com/v2/version/5M4T2FfG",
+            "claim": "moreculling required dependency cloth-config",
+            "summary": "The checked downloadable build explicitly declares this required dependency/integration for this target.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "research-scope",
+            "url": "https://modrinth.com/",
+            "claim": "Research limits",
+            "summary": "Platform links and dated sources are recorded. Missing platform listings, unverified dependencies, maintenance, parity, and future 27.x support are not assertions of absence. Exact mod-release versions are intentionally omitted.",
+            "checkedAt": "2026-10-22",
+            "uncertain": true
+          }
+        ],
+        "comparisons": []
+      }
+    },
+    {
+      "revision": 0,
+      "family": {
+        "id": "oculus",
+        "name": "Oculus / Iris",
+        "description": "Iris-derived shader loading for Forge and an unofficial continuation, with upstream Iris for modern loaders.",
+        "aliases": [
+          "Oculus Unofficial"
+        ],
+        "tags": [
+          "shaders",
+          "rendering"
+        ],
+        "published": true,
+        "archived": false,
+        "projects": [
+          {
+            "id": "oculus-unofficial",
+            "name": "Oculus Unofficial",
+            "description": "Continuation of the end-of-life Forge Oculus branch to support third-party shaders and renderer integrations.",
+            "listings": [
+              {
+                "platform": "CURSEFORGE",
+                "platformId": "1476003",
+                "url": "https://www.curseforge.com/minecraft/mc-mods/oculus-unofficial"
+              }
+            ],
+            "support": [
+              {
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "A downloadable build is listed for this Minecraft version/loader. Exact mod-release version not stored; feature parity and branch maintenance unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "oculus-unofficial-official"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.7.10",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.12.2",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              }
+            ],
+            "relationships": [
+              {
+                "relatedProjectId": "oculus",
+                "type": "FORK",
+                "target": null,
+                "notes": "Maintainer identifies this as an unofficial Oculus fork; send fork-specific issues to its own maintainer.",
+                "evidenceIds": [
+                  "oculus-unofficial-fork-oculus"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "oculus",
+            "name": "Oculus",
+            "description": "Unofficial Fork of \"Iris\", made to work with FML",
+            "listings": [
+              {
+                "platform": "MODRINTH",
+                "platformId": "GchcoXML",
+                "url": "https://modrinth.com/mod/oculus"
+              }
+            ],
+            "support": [
+              {
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "oculus-1-20-1-forge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.7.10",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.12.2",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              }
+            ],
+            "relationships": [
+              {
+                "relatedProjectId": "iris",
+                "type": "FORK",
+                "target": null,
+                "notes": "Oculus identifies itself as an unofficial Iris port for Forge.",
+                "evidenceIds": [
+                  "oculus-fork-iris"
+                ]
+              },
+              {
+                "relatedProjectId": "embeddium",
+                "type": "REQUIRED_DEPENDENCY",
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "notes": "The checked downloadable build explicitly declares this required dependency/integration for this target.",
+                "evidenceIds": [
+                  "oculus-required_dependency-embeddium-1-20-1"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "iris",
+            "name": "Iris Shaders",
+            "description": "A modern shader pack loader for Minecraft intended to be compatible with existing OptiFine shader packs",
+            "listings": [
+              {
+                "platform": "MODRINTH",
+                "platformId": "YL57xq9U",
+                "url": "https://modrinth.com/mod/iris"
+              }
+            ],
+            "support": [
+              {
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "iris-1-21-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.7.10",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.12.2",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "iris-26-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "iris-26-1-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1.2",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "iris-26-1-2-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.2",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "iris-26-2-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.3",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "iris-26-3-neoforge"
+                ],
+                "releases": []
+              }
+            ],
+            "relationships": []
+          }
+        ],
+        "evidence": [
+          {
+            "id": "oculus-unofficial-official",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/oculus-unofficial",
+            "claim": "Project purpose and published support",
+            "summary": "Continuation of the end-of-life Forge Oculus branch to support third-party shaders and renderer integrations. Official listing checked for explicit Minecraft version and loader labels.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "oculus-description",
+            "url": "https://modrinth.com/mod/oculus",
+            "claim": "Project identity and purpose",
+            "summary": "Unofficial Fork of \"Iris\", made to work with FML",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "oculus-1-20-1-forge",
+            "url": "https://api.modrinth.com/v2/project/GchcoXML/version?game_versions=%5B%221.20.1%22%5D&loaders=%5B%22forge%22%5D",
+            "claim": "Downloadable 1.20.1 FORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "iris-description",
+            "url": "https://modrinth.com/mod/iris",
+            "claim": "Project identity and purpose",
+            "summary": "A modern shader pack loader for Minecraft intended to be compatible with existing OptiFine shader packs",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "iris-1-21-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/YL57xq9U/version?game_versions=%5B%221.21.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 1.21.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "iris-26-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/YL57xq9U/version?game_versions=%5B%2226.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "iris-26-1-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/YL57xq9U/version?game_versions=%5B%2226.1.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "iris-26-1-2-neoforge",
+            "url": "https://api.modrinth.com/v2/project/YL57xq9U/version?game_versions=%5B%2226.1.2%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1.2 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "iris-26-2-neoforge",
+            "url": "https://api.modrinth.com/v2/project/YL57xq9U/version?game_versions=%5B%2226.2%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.2 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "iris-26-3-neoforge",
+            "url": "https://api.modrinth.com/v2/project/YL57xq9U/version?game_versions=%5B%2226.3%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.3 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "oculus-unofficial-fork-oculus",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/oculus-unofficial",
+            "claim": "oculus-unofficial fork oculus",
+            "summary": "Maintainer identifies this as an unofficial Oculus fork; send fork-specific issues to its own maintainer.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "oculus-fork-iris",
+            "url": "https://modrinth.com/mod/oculus",
+            "claim": "oculus fork iris",
+            "summary": "Oculus identifies itself as an unofficial Iris port for Forge.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "oculus-required_dependency-embeddium-1-20-1",
+            "url": "https://api.modrinth.com/v2/version/iQ1SwGc3",
+            "claim": "oculus required dependency embeddium",
+            "summary": "The checked downloadable build explicitly declares this required dependency/integration for this target.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "research-scope",
+            "url": "https://modrinth.com/",
+            "claim": "Research limits",
+            "summary": "Platform links and dated sources are recorded. Missing platform listings, unverified dependencies, maintenance, parity, and future 27.x support are not assertions of absence. Exact mod-release versions are intentionally omitted.",
+            "checkedAt": "2026-10-22",
+            "uncertain": true
+          }
+        ],
+        "comparisons": []
+      }
+    },
+    {
+      "revision": 0,
+      "family": {
+        "id": "radium",
+        "name": "Radium / Lithium",
+        "description": "Game-logic optimization: Lithium upstream and separate Radium Forge ports and continuations.",
+        "aliases": [
+          "Radium Re-Reforged",
+          "Radium Reforged"
+        ],
+        "tags": [
+          "performance",
+          "server-utility"
+        ],
+        "published": true,
+        "archived": false,
+        "projects": [
+          {
+            "id": "radium-re-reforged",
+            "name": "Radium Re-Reforged",
+            "description": "Maintained Forge continuation of Radium Reforged with bug fixes and a documented exception to upstream optimization parity.",
+            "listings": [
+              {
+                "platform": "CURSEFORGE",
+                "platformId": "1649038",
+                "url": "https://www.curseforge.com/minecraft/mc-mods/radium-re-reforged"
+              }
+            ],
+            "support": [
+              {
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "A downloadable build is listed for this Minecraft version/loader. Exact mod-release version not stored; feature parity and branch maintenance unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "radium-re-reforged-official"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.7.10",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.12.2",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              }
+            ],
+            "relationships": [
+              {
+                "relatedProjectId": "radium",
+                "type": "FORK",
+                "target": null,
+                "notes": "Continuation of Radium Reforged for Forge 1.20.1.",
+                "evidenceIds": [
+                  "radium-re-reforged-fork-radium"
+                ]
+              },
+              {
+                "relatedProjectId": "radium",
+                "type": "INCOMPATIBILITY",
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "notes": "Do not install alongside original Radium: both use the same mod ID. This is a mutually exclusive replacement, not an additional optimization layer.",
+                "evidenceIds": [
+                  "radium-re-reforged-incompatibility-radium-1-20-1"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "radium",
+            "name": "Radium",
+            "description": "Radium is an Unofficial Fork of CaffeineMC's \"Lithium\", made to work with Forge Mod Loader.",
+            "listings": [
+              {
+                "platform": "MODRINTH",
+                "platformId": "2gvRmQXx",
+                "url": "https://modrinth.com/mod/radium"
+              }
+            ],
+            "support": [
+              {
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "radium-1-20-1-forge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "radium-1-21-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.7.10",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.12.2",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              }
+            ],
+            "relationships": [
+              {
+                "relatedProjectId": "lithium",
+                "type": "FORK",
+                "target": null,
+                "notes": "Radium identifies itself as a Forge port of Lithium.",
+                "evidenceIds": [
+                  "radium-fork-lithium"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "lithium",
+            "name": "Lithium",
+            "description": "No-compromises game logic optimization mod, useful for both single-player games and multi-player servers.",
+            "listings": [
+              {
+                "platform": "MODRINTH",
+                "platformId": "gvQqBUqZ",
+                "url": "https://modrinth.com/mod/lithium"
+              }
+            ],
+            "support": [
+              {
+                "target": {
+                  "minecraftVersion": "1.20.1",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.21.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "lithium-1-21-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.7.10",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "1.12.2",
+                  "loader": "FORGE"
+                },
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "No matching release verified in this platform listing. Other distribution channels were not ruled out; availability remains unknown.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "lithium-26-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1.1",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "lithium-26-1-1-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.1.2",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "lithium-26-1-2-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.2",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "lithium-26-2-neoforge"
+                ],
+                "releases": []
+              },
+              {
+                "target": {
+                  "minecraftVersion": "26.3",
+                  "loader": "NEOFORGE"
+                },
+                "availability": "RELEASED",
+                "maintenance": "UNKNOWN",
+                "notes": "Availability verified from exact version/loader release metadata. Maintenance and cross-branch feature parity remain unverified.",
+                "checkedAt": "2026-10-22",
+                "evidenceIds": [
+                  "lithium-26-3-neoforge"
+                ],
+                "releases": []
+              }
+            ],
+            "relationships": []
+          }
+        ],
+        "evidence": [
+          {
+            "id": "radium-re-reforged-official",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/radium-re-reforged",
+            "claim": "Project purpose and published support",
+            "summary": "Maintained Forge continuation of Radium Reforged with bug fixes and a documented exception to upstream optimization parity. Official listing checked for explicit Minecraft version and loader labels.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "radium-description",
+            "url": "https://modrinth.com/mod/radium",
+            "claim": "Project identity and purpose",
+            "summary": "Radium is an Unofficial Fork of CaffeineMC's \"Lithium\", made to work with Forge Mod Loader.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "radium-1-20-1-forge",
+            "url": "https://api.modrinth.com/v2/project/2gvRmQXx/version?game_versions=%5B%221.20.1%22%5D&loaders=%5B%22forge%22%5D",
+            "claim": "Downloadable 1.20.1 FORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "radium-1-21-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/2gvRmQXx/version?game_versions=%5B%221.21.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 1.21.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "lithium-description",
+            "url": "https://modrinth.com/mod/lithium",
+            "claim": "Project identity and purpose",
+            "summary": "No-compromises game logic optimization mod, useful for both single-player games and multi-player servers.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "lithium-1-21-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/gvQqBUqZ/version?game_versions=%5B%221.21.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 1.21.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "lithium-26-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/gvQqBUqZ/version?game_versions=%5B%2226.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "lithium-26-1-1-neoforge",
+            "url": "https://api.modrinth.com/v2/project/gvQqBUqZ/version?game_versions=%5B%2226.1.1%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1.1 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "lithium-26-1-2-neoforge",
+            "url": "https://api.modrinth.com/v2/project/gvQqBUqZ/version?game_versions=%5B%2226.1.2%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.1.2 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "lithium-26-2-neoforge",
+            "url": "https://api.modrinth.com/v2/project/gvQqBUqZ/version?game_versions=%5B%2226.2%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.2 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "lithium-26-3-neoforge",
+            "url": "https://api.modrinth.com/v2/project/gvQqBUqZ/version?game_versions=%5B%2226.3%22%5D&loaders=%5B%22neoforge%22%5D",
+            "claim": "Downloadable 26.3 NEOFORGE build verified",
+            "summary": "The official project release index contains files explicitly tagged for this Minecraft version and loader. Exact mod-release versions are intentionally not stored.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "radium-re-reforged-fork-radium",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/radium-re-reforged",
+            "claim": "radium-re-reforged fork radium",
+            "summary": "Continuation of Radium Reforged for Forge 1.20.1.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "radium-re-reforged-incompatibility-radium-1-20-1",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/radium-re-reforged",
+            "claim": "radium-re-reforged incompatibility radium",
+            "summary": "Do not install alongside original Radium: both use the same mod ID. This is a mutually exclusive replacement, not an additional optimization layer.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "radium-fork-lithium",
+            "url": "https://modrinth.com/mod/radium",
+            "claim": "radium fork lithium",
+            "summary": "Radium identifies itself as a Forge port of Lithium.",
+            "checkedAt": "2026-10-22",
+            "uncertain": false
+          },
+          {
+            "id": "research-scope",
+            "url": "https://modrinth.com/",
+            "claim": "Research limits",
+            "summary": "Platform links and dated sources are recorded. Missing platform listings, unverified dependencies, maintenance, parity, and future 27.x support are not assertions of absence. Exact mod-release versions are intentionally omitted.",
+            "checkedAt": "2026-10-22",
+            "uncertain": true
+          }
+        ],
+        "comparisons": [
+          {
+            "id": "radium-primary-parity",
+            "left": {
+              "projectId": "radium",
+              "target": {
+                "minecraftVersion": "1.20.1",
+                "loader": "FORGE"
+              }
+            },
+            "right": {
+              "projectId": "radium",
+              "target": {
+                "minecraftVersion": "1.21.1",
+                "loader": "NEOFORGE"
+              }
+            },
+            "parity": "UNKNOWN",
+            "notes": "Both exact targets have published builds. Feature equivalence and development priority have not been established; matching release names are insufficient evidence.",
+            "checkedAt": "2026-10-22",
+            "evidenceIds": []
+          }
+        ]
+      }
+    }
+  ]
+}

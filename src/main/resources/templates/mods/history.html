@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{mods/fragments :: head('Mod family history')}"></head>
+<body><header th:replace="~{mods/fragments :: header}"></header><main class="shell editor-shell">
+    <div class="breadcrumbs"><a href="/admin/mods">Manage mods</a><span>/</span><a th:href="@{/admin/mods/{id}/edit(id=${entry.family().id()})}" th:text="${entry.family().name()}"></a><span>/</span><span>History</span></div>
+    <section class="hero"><div><p class="eyebrow">A TRACEABLE CATALOGUE</p><h1>Every change has a story.</h1><p class="lede">Inspect earlier snapshots or restore one as a new revision. Existing history is preserved.</p></div></section>
+    <p class="notice" th:if="${notice}" th:text="${notice}"></p><p class="notice error" th:if="${error}" th:text="${error}"></p>
+    <article class="panel" th:each="revision : ${history}"><div class="card-heading"><h2 th:text="${'Revision ' + revision.revision()}"></h2><span class="tag" th:if="${revision.revision() == entry.revision()}">Current</span></div>
+        <p th:text="${revision.reason()}"></p><p class="muted" th:text="${revision.actor() + ' · ' + revision.changedAt()}"></p>
+        <details><summary>Inspect saved snapshot</summary><div class="detail-body"><h3 th:text="${revision.family().name()}"></h3><p class="preserve" th:text="${revision.family().description()}"></p><p th:text="${'Published: ' + revision.family().published() + ' · Archived: ' + revision.family().archived()}"></p><pre th:text="${@modCatalogueService.familyJson(revision.family())}"></pre></div></details>
+        <form th:if="${revision.revision() != entry.revision()}" method="post" th:action="@{/admin/mods/{id}/restore(id=${entry.family().id()})}" class="restore-form"><input type="hidden" name="revision" th:value="${revision.revision()}"><input type="hidden" name="expectedRevision" th:value="${entry.revision()}"><label>Reason for restoring<input name="reason" required maxlength="2000" th:value="${'Restore revision ' + revision.revision()}"></label><button type="submit" th:text="${'Restore revision ' + revision.revision()}"></button></form>
+    </article>
+    <nav class="pagination" aria-label="History pages"><a class="button" th:if="${offset > 0}" th:href="@{/admin/mods/{id}/history(id=${entry.family().id()},offset=${T(java.lang.Math).max(0,offset-25)})}">← Newer</a><a class="button" th:if="${history.size() == 25}" th:href="@{/admin/mods/{id}/history(id=${entry.family().id()},offset=${offset+25})}">Older →</a></nav>
+</main></body></html>

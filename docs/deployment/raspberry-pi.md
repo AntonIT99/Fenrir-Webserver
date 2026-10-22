@@ -2,6 +2,10 @@
 
 Dieses Dokument beschreibt Deployment, SQLite und Bootstrap-Admin fuer die Spring-Boot-App.
 
+Alle lokalen Befehle werden vom Repository-Stamm ausgefuehrt. Einen Ueberblick bietet
+die [README](../../README.md); die private Mod-Recherche-API und deren Backup-Verfahren
+stehen im [Katalog-Betriebshandbuch](../mod-catalogue/operations.md).
+
 ## 1. Voraussetzungen auf dem PC
 
 - Java 17 ist installiert.

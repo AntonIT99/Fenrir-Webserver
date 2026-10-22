@@ -74,6 +74,13 @@ class SecurityRoutesTest
     }
 
     @Test
+    void researchApiIsDisabledByDefault() throws Exception
+    {
+        mvc.perform(get("/internal/mod-catalogue/v1/targets").servletPath("/internal/mod-catalogue/v1/targets"))
+            .andExpect(status().isNotFound());
+    }
+
+    @Test
     void protectedRoutesRedirectAnonymousUsersToLogin() throws Exception
     {
         mvc.perform(get("/dashboard"))

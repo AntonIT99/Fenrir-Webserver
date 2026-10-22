@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{mods/fragments :: head(${entry.family().name()})}"></head>
+<body><header th:replace="~{mods/fragments :: header}"></header>
+<main class="shell" th:with="family=${entry.family()}">
+    <div class="breadcrumbs"><a href="/games/minecraft">Minecraft</a><span>/</span><a th:href="${adminPreview ? '/admin/mods' : '/games/minecraft/mods'}">Minecraft Mods</a><span>/</span><span th:text="${family.name()}"></span></div>
+    <div class="notice" th:if="${adminPreview}">Admin preview · <span th:text="${family.archived() ? 'Archived' : (family.published() ? 'Published' : 'Draft — visible only to admins')}"></span><a th:href="@{/admin/mods/{id}/edit(id=${family.id()})}">Edit family</a></div>
+    <section class="hero"><div><p class="eyebrow">MOD FAMILY</p><h1 th:text="${family.name()}"></h1><p class="lede preserve" th:text="${family.description()}"></p><div class="tags"><span class="tag" th:each="tag : ${family.tags()}" th:text="${@modView.label(tag)}"></span></div><p class="muted" th:if="${!family.aliases().isEmpty()}">Also known as <span th:text="${#strings.listJoin(family.aliases(), ', ')}"></span></p></div></section>
+    <section class="panel"><div class="section-heading"><h2>Version overview</h2><span class="muted">An available build does not imply feature parity.</span></div><div th:replace="~{mods/fragments :: matrix(${family})}"></div></section>
+    <div class="section-heading"><h2>Projects in this family</h2><span class="muted" th:text="${family.projects().size() + ' distinct projects'}"></span></div>
+    <article class="panel project" th:each="project : ${family.projects()}" th:id="${project.id()}">
+        <p class="eyebrow">PROJECT</p><h2 th:text="${project.name()}"></h2><p class="preserve" th:text="${project.description()}"></p>
+        <div class="actions"><a class="button" th:each="listing : ${project.listings()}" th:href="${listing.url()}" target="_blank" rel="noopener noreferrer" th:text="${@modView.label(listing.platform()) + ' ↗'}"></a><span class="muted" th:if="${project.listings().isEmpty()}">Platform listings have not been added.</span></div>
+        <h3>Support &amp; releases</h3><p class="muted" th:if="${project.support().isEmpty()}">Version support has not been researched.</p>
+        <details class="support-detail" th:each="support : ${project.support()}">
+            <summary><strong th:text="${@modView.target(support.target())}"></strong><span class="status" th:classappend="${support.availability().name()}" th:text="${@modView.label(support.availability())}"></span></summary>
+            <div class="detail-body"><p><strong>Maintenance:</strong> <span th:text="${@modView.label(support.maintenance())}"></span> <span class="muted" th:if="${support.checkedAt() != null}" th:text="${'· Checked ' + support.checkedAt()}"></span></p><p class="preserve" th:text="${support.notes()}"></p>
+                <ul class="release-list" th:if="${!support.releases().isEmpty()}"><li th:each="release : ${support.releases()}"><a th:href="${release.url()}" target="_blank" rel="noopener noreferrer" th:text="${release.modVersion() + ' · ' + @modView.label(release.channel()) + ' ↗'}"></a><span class="muted" th:text="${release.publishedAt()}"></span></li></ul>
+                <div class="source-links"><a th:each="id : ${support.evidenceIds()}" th:href="${'#source-' + id}" th:text="${'Source: ' + id}"></a></div></div>
+        </details>
+        <h3 th:if="${!project.relationships().isEmpty()}">Related projects</h3>
+        <div class="relation" th:each="relation : ${project.relationships()}"><span class="tag" th:text="${@modView.label(relation.type())}"></span>
+            <a th:if="${related.containsKey(relation.relatedProjectId())}" th:with="link=${related.get(relation.relatedProjectId())}" th:href="${(adminPreview ? '/admin/mods/' + link.familyId() + '/preview' : '/games/minecraft/mods/' + link.familyId()) + '#' + link.projectId()}" th:text="${link.name()}"></a><span th:if="${!related.containsKey(relation.relatedProjectId())}">Related project not published</span>
+            <small th:text="${relation.target() == null ? 'All versions' : @modView.target(relation.target())}"></small><p class="preserve" th:text="${relation.notes()}"></p><div class="source-links"><a th:each="id : ${relation.evidenceIds()}" th:href="${'#source-' + id}" th:text="${'Source: ' + id}"></a></div></div>
+    </article>
+    <section class="panel" th:if="${!family.comparisons().isEmpty()}"><p class="eyebrow">BRANCH COMPARISONS</p><h2>How do the versions compare?</h2><div class="comparison" th:each="comparison : ${family.comparisons()}">
+        <span class="status" th:text="${@modView.label(comparison.parity()) + ' parity'}"></span><h3 th:text="${@modView.projectName(family,comparison.left().projectId()) + ' · ' + @modView.target(comparison.left().target())}"></h3><p class="muted" th:text="${'compared with ' + @modView.projectName(family,comparison.right().projectId()) + ' · ' + @modView.target(comparison.right().target())}"></p><p class="preserve" th:text="${comparison.notes()}"></p><small th:if="${comparison.checkedAt() != null}" th:text="${'Checked ' + comparison.checkedAt()}"></small><div class="source-links"><a th:each="id : ${comparison.evidenceIds()}" th:href="${'#source-' + id}" th:text="${'Source: ' + id}"></a></div>
+    </div></section>
+    <section class="panel"><p class="eyebrow">PLAN YOUR MODPACK</p><h2>Confirmed incompatibilities</h2>
+        <p class="muted" th:if="${incompatibilities.isEmpty()}">No confirmed incompatibilities recorded. This does not establish compatibility with every mod.</p>
+        <article class="relation" th:each="conflict : ${incompatibilities}"><h3 th:text="${conflict.source() + ' + ' + conflict.other()}"></h3><span class="tag draft" th:text="${conflict.target() == null ? 'See scope below' : @modView.target(conflict.target())}"></span><p class="preserve" th:text="${conflict.notes()}"></p><div class="source-links"><a th:each="source : ${conflict.evidence()}" th:href="${source.url()}" rel="noopener noreferrer" target="_blank" th:text="${source.claim() + ' · Checked ' + source.checkedAt()}"></a></div></article>
+    </section>
+    <section class="panel sources"><p class="eyebrow">RESEARCH EVIDENCE</p><h2>Sources &amp; verification</h2><p class="muted" th:if="${family.evidence().isEmpty()}">No sources recorded yet. Unresearched information remains unknown.</p>
+        <article th:each="source : ${family.evidence()}" th:id="${'source-' + source.id()}"><span class="tag draft" th:if="${source.uncertain()}">Uncertain — needs review</span><h3 th:text="${source.claim()}"></h3><p class="preserve" th:text="${source.summary()}"></p><a th:href="${source.url()}" target="_blank" rel="noopener noreferrer" th:text="${source.url() + ' ↗'}"></a><small th:text="${'Checked ' + source.checkedAt()}"></small></article>
+    </section>
+</main></body></html>

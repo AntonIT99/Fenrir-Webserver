@@ -17,6 +17,7 @@ public class SecurityConfig
     {
         return http
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/admin/mods", "/admin/mods/**").hasRole("ADMIN")
                 .requestMatchers(
                     "/",
                     "/index.html",

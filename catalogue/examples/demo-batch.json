@@ -1,0 +1,94 @@
+{
+  "requestId": "demo-initial-import",
+  "reason": "Synthetic fixture to demonstrate the API; these are not real Minecraft projects.",
+  "changes": [
+    {
+      "expectedRevision": 0,
+      "family": {
+        "id": "catalogue-demo",
+        "name": "Catalogue demonstration",
+        "description": "Synthetic machines and library projects for local testing. No real mod availability or parity is claimed.",
+        "aliases": ["Example Machines", "Example Machines Reforged"],
+        "tags": ["scifi", "machines"],
+        "published": false,
+        "archived": false,
+        "projects": [
+          {
+            "id": "demo-machines",
+            "name": "Example Machines",
+            "description": "A fictional machines mod used to exercise support assessments and dependencies.",
+            "listings": [],
+            "support": [
+              {
+                "target": {"minecraftVersion": "1.20.1", "loader": "FORGE"},
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "Demonstration only; no build has been researched.",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              },
+              {
+                "target": {"minecraftVersion": "1.21.1", "loader": "NEOFORGE"},
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "Demonstration only; no build has been researched.",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              }
+            ],
+            "relationships": [
+              {
+                "relatedProjectId": "demo-core",
+                "type": "REQUIRED_DEPENDENCY",
+                "target": {"minecraftVersion": "1.20.1", "loader": "FORGE"},
+                "notes": "Synthetic scoped dependency to validate the contract.",
+                "evidenceIds": ["fixture-notice"]
+              }
+            ]
+          },
+          {
+            "id": "demo-core",
+            "name": "Example Core",
+            "description": "A fictional library for demonstrating relationships between projects.",
+            "listings": [],
+            "support": [
+              {
+                "target": {"minecraftVersion": "1.20.1", "loader": "FORGE"},
+                "availability": "UNKNOWN",
+                "maintenance": "UNKNOWN",
+                "notes": "Synthetic library target.",
+                "checkedAt": null,
+                "evidenceIds": [],
+                "releases": []
+              }
+            ],
+            "relationships": []
+          }
+        ],
+        "evidence": [
+          {
+            "id": "fixture-notice",
+            "url": "https://example.com/",
+            "claim": "This is demonstration data, not researched mod information.",
+            "summary": "The source URL is a placeholder. Replace all synthetic content before publishing.",
+            "checkedAt": "2026-10-22",
+            "uncertain": true
+          }
+        ],
+        "comparisons": [
+          {
+            "id": "primary-targets",
+            "left": {"projectId": "demo-machines", "target": {"minecraftVersion": "1.20.1", "loader": "FORGE"}},
+            "right": {"projectId": "demo-machines", "target": {"minecraftVersion": "1.21.1", "loader": "NEOFORGE"}},
+            "parity": "UNKNOWN",
+            "notes": "Parity is explicitly unverified between these two example branches.",
+            "checkedAt": null,
+            "evidenceIds": []
+          }
+        ]
+      }
+    }
+  ]
+}

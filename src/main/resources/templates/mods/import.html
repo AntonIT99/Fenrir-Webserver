@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{mods/fragments :: head('Import and export mods')}"></head>
+<body><header th:replace="~{mods/fragments :: header}"></header><main class="shell editor-shell">
+    <div class="breadcrumbs"><a href="/admin/mods">Manage mods</a><span>/</span><span>Import / export</span></div>
+    <section class="hero"><div><p class="eyebrow">CATALOGUE WORKSPACE</p><h1>Move your research forward.</h1><p class="lede">Preview a structured batch before importing. Every family in the batch is saved together.</p></div></section>
+    <section class="panel"><h2>Import a batch</h2><p class="muted">Use the catalogue batch format with a unique request ID, change reason, and expected revisions. Maximum 20 families and 1 MiB.</p>
+        <label>Load a JSON file<input id="import-file" type="file" accept=".json,application/json"></label><label>Batch JSON<textarea id="import-json" rows="12" spellcheck="false" placeholder='{"requestId":"…","reason":"…","changes":[…]}'></textarea></label>
+        <div class="actions"><button id="preview-import" type="button">Preview import</button><button id="commit-import" class="primary" type="button" disabled>Import validated batch</button></div><div id="import-status" class="feedback" role="status" aria-live="polite"></div><div id="import-preview"></div>
+    </section>
+    <section class="panel"><h2>Export your catalogue</h2><p>Download every family, including drafts and archives, with its current revision. This is a catalogue export; database backups also retain the complete change history.</p><button id="export-catalogue" type="button">Download JSON export</button><div id="export-status" role="status" aria-live="polite"></div></section>
+</main><script src="/js/mod-editor.js" defer></script></body></html>

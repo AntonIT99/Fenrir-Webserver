@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{mods/fragments :: head('Edit mod family')}"></head>
+<body><header th:replace="~{mods/fragments :: header}"></header><main class="shell editor-shell">
+    <div class="breadcrumbs"><a href="/games/minecraft">Minecraft</a><span>/</span><a href="/admin/mods">Manage mods</a><span>/</span><span th:text="${entry.revision() == 0 ? 'New family' : entry.family().name()}"></span></div>
+    <section class="hero"><div><p class="eyebrow">CATALOGUE WORKSPACE</p><h1 th:text="${entry.revision() == 0 ? 'A new family begins here.' : 'Edit mod family.'}"></h1><p class="lede">Keep projects distinct, make uncertainty visible, and connect claims to their sources.</p></div></section>
+    <div class="toolbar" th:if="${entry.revision() > 0}"><a class="button" th:href="@{/admin/mods/{id}/preview(id=${entry.family().id()})}">Preview saved entry</a><a class="button" th:href="@{/admin/mods/{id}/history(id=${entry.family().id()})}">History &amp; restore</a><span class="muted" th:text="${'Editing revision ' + entry.revision()}"></span></div>
+    <noscript><p class="notice">JavaScript is required for the editor. Browsing works without it.</p></noscript>
+    <textarea id="initial-family" hidden th:text="${familyJson}"></textarea>
+    <form id="mod-editor" th:attr="data-revision=${entry.revision()}">
+        <nav class="editor-jumps" aria-label="Editor sections"><a href="#family-essentials">Essentials</a><a href="#family-projects">Projects</a><a href="#family-evidence">Sources</a><a href="#family-comparisons">Comparisons</a><a href="#review-save">Review &amp; save</a></nav>
+        <div id="family-fields"></div>
+        <section class="panel" id="review-save"><h2>Review &amp; save</h2><label>Reason for this change<textarea id="change-reason" required maxlength="2000" rows="2" placeholder="What changed, and why?"></textarea></label>
+            <div id="save-status" class="feedback" role="status" aria-live="polite"></div>
+            <div class="actions"><button type="button" id="validate-family">Validate without saving</button><button class="primary" type="submit">Save family</button><a href="/admin/mods">Cancel</a></div></section>
+    </form>
+</main><script src="/js/mod-editor.js" defer></script></body></html>

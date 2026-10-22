@@ -38,3 +38,16 @@ out/
 
 deploy-to-pi.local.ps1
 data/
+__pycache__/
+*.pyc
+
+# Local configuration, credentials, SQLite databases, and snapshots
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.env
+!*.env.example

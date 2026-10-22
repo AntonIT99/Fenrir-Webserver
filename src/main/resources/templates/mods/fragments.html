@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title + ' · Minecraft'}">Minecraft Mods</title>
+    <link rel="stylesheet" href="/css/mods.css">
+    <meta th:if="${_csrf != null}" name="csrf-token" th:content="${_csrf.token}">
+    <meta th:if="${_csrf != null}" name="csrf-header" th:content="${_csrf.headerName}">
+</head>
+<body>
+<header th:fragment="header" class="site-header">
+    <a class="brand" href="/games/minecraft"><span class="brand-dot">◇</span> Minecraft</a>
+    <nav aria-label="Minecraft navigation">
+        <a href="/games/minecraft/mods">Minecraft Mods</a>
+        <a href="/games/minecraft/server">Minecraft Server</a>
+        <a href="/admin/mods" sec:authorize="hasRole('ADMIN')">Manage mods</a>
+    </nav>
+</header>
+<div th:fragment="matrix(family)" class="table-scroll" tabindex="0" aria-label="Version support table; scroll for more versions">
+    <table class="support-table">
+        <caption class="sr-only" th:text="${family.name() + ' version support'}">Version support</caption>
+        <thead><tr><th scope="col">Project</th><th scope="col" th:each="target : ${@modView.primaryTargets()}" th:text="${@modView.target(target)}"></th></tr></thead>
+        <tbody><tr th:each="project : ${family.projects()}">
+            <th scope="row" th:text="${project.name()}"></th>
+            <td th:each="target : ${@modView.primaryTargets()}" th:with="support=${@modView.support(project,target)}">
+                <span th:if="${support == null}" class="unresearched">Not researched</span>
+                <th:block th:if="${support != null}">
+                    <span class="status" th:classappend="${support.availability().name()}" th:text="${@modView.label(support.availability())}"></span>
+                    <small th:text="${@modView.label(support.maintenance()) + ' maintenance'}"></small>
+                </th:block>
+            </td>
+        </tr></tbody>
+    </table>
+</div>
+</body></html>
